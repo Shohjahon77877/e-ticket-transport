@@ -6,4 +6,7 @@ const controller = new CustomerController();
 
 router
     .post('/signup', controller.signUp)
+    .post('/signin', controller.signIn)
+    .post('/confirm-signin', controller.confirmSignIn)
+    .get('/', controller.getAllCustomer)
 export default router;
