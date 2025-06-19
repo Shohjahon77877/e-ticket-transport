@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "12a70e77-712d-4dce-a6db-ad02cae9135c",
+		"name": "e-ticket-tranport",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "44923400",
+		"_collection_link": "https://shohjahontoshboyev.postman.co/workspace/Shohjahon-Toshboyev's-Workspace~3071911d-cad7-4f5e-8695-ff4f790e52a5/collection/44923400-12a70e77-712d-4dce-a6db-ad02cae9135c?action=share&source=collection_link&creator=44923400"
+	},
+	"item": [
+		{
+			"name": "transport_CRUD",
+			"item": [
+				{
+					"name": "localhost:3000/transport",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"transport_type\": \"Plane\",\r\n  \"class\": \"economy\",\r\n  \"seat\": 40\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/transport"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ticket_CRUD",
+			"item": [
+				{
+					"name": "localhost:3000/ticket",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"transportID\": \"684d75e7e95aa897605b5d52\",\r\n  \"from\": \"Bahir Dar\",\r\n  \"to\": \"Gondar\",\r\n  \"price\": 150,\r\n  \"departure\": \"2025-06-19T09:00:00.000Z\",\r\n  \"arrival\": \"2025-06-19T11:00:00.000Z\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/ticket"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customer_signUp",
+			"item": [
+				{
+					"name": "localhost:3000/customer/signup",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"phone_number\": \"+998997867866\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/customer/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/customer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jhondoe@gmail.com\",\r\n    \"phone_number\": \"+998997867878\"\r\n}"
+						},
+						"url": "localhost:3000/customer"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customer_signIn",
+			"item": [
+				{
+					"name": "localhost:3000/customer/signin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/customer/signin"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customer_confirm_signin",
+			"item": [
+				{
+					"name": "localhost:3000/customer/confirm-signin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"otp\": \"351914\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/customer/confirm-signin"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
