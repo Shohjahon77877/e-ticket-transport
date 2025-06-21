@@ -137,4 +137,55 @@ export class CustomerController {
             return errorHandle(res, error);
         }
     }
+
+    async newAccessToken(req, res) {
+        try {
+            const refreshToken = req.cookies?.refreshTokenCustomer
+            if (!refreshToken) {
+                return errorHandle(res, 'Refresh token expired', 400)
+            }
+
+            const decodedToken = await token.verifyToken(refreshToken, config.REFRESH_TOKEN_KEY);
+            if (!decodedToken) {
+                return errorHandle(res, 'Invalid token', 400);
+            }
+
+            const customer = await Customer.findById(decodedToken.id);
+            if (!customer) {
+                return errorHandle(res, 'Customer not found', 404);
+            }
+
+            const payload = { id: customer._id };
+            const accessToken = await token.generateAccessToken(payload);
+            return successHandle(res, {
+                token: accessToken
+            });
+        } catch (error) {
+            return errorHandle(res, error);
+        }
+    }
+
+    async logout(req, res) {
+        try {
+            const refreshToken = req.cookies?.refreshTokenCustomer;
+            if (!refreshToken) {
+                return errorHandle(res, 'Refresh token expired', 400)
+            }
+
+            const decodedToken = await token.verifyToken(refreshToken, config.REFRESH_TOKEN_KEY);
+            if (!decodedToken) {
+                return errorHandle(res, 'Invalid token', 400);
+            }
+
+            const customer = await Customer.findById(decodedToken.id);
+            if (!customer) {
+                return errorHandle(res, 'Customer not found', 404);
+            }
+
+            res.clearCookie('refreshTokenCustomer');
+            return successHandle(res, {});
+        } catch (error) {
+            return errorHandle(res, error);
+        }
+    }
 }

@@ -9,4 +9,6 @@ router
     .post('/signin', controller.signIn)
     .post('/confirm-signin', controller.confirmSignIn)
     .get('/', controller.getAllCustomer)
+    .post('/token', controller.newAccessToken)
+    .post('/logout', controller.logout)
 export default router;

@@ -155,6 +155,58 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "customer_newAccessToken",
+			"item": [
+				{
+					"name": "localhost:3000/customer/token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jhondoe@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/customer/token"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customer_logout",
+			"item": [
+				{
+					"name": "localhost:3000/customer/logout",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jhondoe@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/customer/logout"
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
