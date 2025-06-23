@@ -6,11 +6,13 @@ import transportRouter from './routes/transport.routes.js';
 import ticketRouter from './routes/ticket.routes.js';
 import customerRouter from './routes/customer.routes.js';
 import cookieParser from 'cookie-parser';
+import { createSuperAdmin } from './db/create-superadmin.js';
 
 const app = express();
 app.use(express.json());
 
 await connectDB();
+await createSuperAdmin();
 
 app.use(cookieParser());
 
