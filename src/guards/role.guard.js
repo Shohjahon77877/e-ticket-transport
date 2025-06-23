@@ -5,5 +5,6 @@ export const RolesGuard = (includesRoles = []) => {
         if (!includesRoles.includes(req.user?.role)) {
             return errorHandle(res, 'Forbidden user', 403);
         }
+        next();
     }
 }
