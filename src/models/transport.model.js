@@ -3,7 +3,8 @@ import { Schema, model } from "mongoose";
 const TransportSchema = new Schema({
     transport_type: { type: String, required: true },
     class: { type: String, enum: ['economy', 'business', 'first'], required: true },
-    seat: { type: String, required: true }
+    seat: { type: String, required: true },
+    licensePlate: { type: String, unique: true, required: true }
 }, {
     timestamps: true,
 })

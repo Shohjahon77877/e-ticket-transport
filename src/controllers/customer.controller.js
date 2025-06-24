@@ -149,6 +149,7 @@ export class CustomerController {
             if (!decodedToken) {
                 return errorHandle(res, 'Invalid token', 400);
             }
+            console.log(decodedToken);
 
             const customer = await Customer.findById(decodedToken.id);
             if (!customer) {

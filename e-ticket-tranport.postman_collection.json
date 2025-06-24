@@ -12,22 +12,28 @@
 			"item": [
 				{
 					"name": "localhost:3000/transport",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWFmNzJiMDA3ODQxMTgzMDVjNWI5MiIsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNzUwODA1MDY3LCJleHAiOjE3NTA4OTE0Njd9.hATGg5gLDQ4DYdfluhdbtA4zJsXdRXw3ONcNHXbE3Hk"
+							}
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"transport_type\": \"Plane\",\r\n  \"class\": \"economy\",\r\n  \"seat\": 40\r\n}\r\n",
+							"raw": "{\r\n  \"transport_type\": \"Plane\",\r\n  \"class\": \"economy\",\r\n  \"seat\": \"40a\",\r\n  \"licensePlate\": \"e567jb\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:3000/transport"
+						"url": "localhost:3000/transport/685b276f860323e301ae7372"
 					},
 					"response": []
 				}
@@ -38,22 +44,28 @@
 			"item": [
 				{
 					"name": "localhost:3000/ticket",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWFmNzY0MDA3ODQxMTgzMDVjNWI5NiIsImlhdCI6MTc1MDgwNTYyOSwiZXhwIjoxNzUwODkyMDI5fQ.Ushc-3TcQ9LXcL-4KqK5wCXjTzyiyJyoQuXvDff5Pqc"
+							}
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"transportID\": \"684d75e7e95aa897605b5d52\",\r\n  \"from\": \"Bahir Dar\",\r\n  \"to\": \"Gondar\",\r\n  \"price\": 150,\r\n  \"departure\": \"2025-06-19T09:00:00.000Z\",\r\n  \"arrival\": \"2025-06-19T11:00:00.000Z\"\r\n}\r\n",
+							"raw": "{\r\n  \"transportID\": \"685b276f860323e301ae7372\",\r\n  \"from\": \"Bahir Dar\",\r\n  \"to\": \"Gondar\",\r\n  \"price\": 25,\r\n  \"departure\": \"2025-06-19T09:00:00.000Z\",\r\n  \"arrival\": \"2025-06-19T11:00:00.000Z\",\r\n  \"customerID\": \"685af76400784118305c5b96\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:3000/ticket"
+						"url": "localhost:3000/ticket/685b27b2860323e301ae7376"
 					},
 					"response": []
 				}
@@ -117,7 +129,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"\"\r\n}",
+							"raw": "{\r\n    \"email\": \"toshboyevshohjahon77@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -143,7 +155,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"\",\r\n    \"otp\": \"351914\"\r\n}",
+							"raw": "{\r\n    \"email\": \"toshboyevshohjahon77@gmail.com\",\r\n    \"otp\": \"858508\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -169,7 +181,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"jhondoe@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"email\": \"toshboyevshohjahon77@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -203,6 +215,98 @@
 							}
 						},
 						"url": "localhost:3000/customer/logout"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin signin",
+			"item": [
+				{
+					"name": "localhost:3000/admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTk4MmM4YTY5MWM5MzU3MTNlODQ4ZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MDY5NjY1OCwiZXhwIjoxNzUwNzgzMDU4fQ.G59_yCs8FiBCywttd6pB_YNhMpV-wrD6D5J6LAlCRNQ"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTk3YWMwZDM1NDYxNmUyZGZkMzVmYiIsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNzUwNjk2MjkyLCJleHAiOjE3NTA3ODI2OTJ9.e9zlbE0YOxu-BJXlaQ4FBpRmqgSMNskxBPLo58YsN-k",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Shohjahon\",\r\n    \"password\": \"Shohjahon@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/admin/signin"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/admin/signin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTk3YWMwZDM1NDYxNmUyZGZkMzVmYiIsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNzUwNjk2NjE1LCJleHAiOjE3NTA3ODMwMTV9.Ouc05jVk0ac0Fm_NIdi7196rbqofcwaEJarvbSfhfwY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Shohjahon\",\r\n    \"password\": \"Shohjahon@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/admin/signin"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Passport_CRUD",
+			"item": [
+				{
+					"name": "localhost:3000/passportInfo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWFmNzJiMDA3ODQxMTgzMDVjNWI5MiIsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNzUwODAwMzU5LCJleHAiOjE3NTA4ODY3NTl9.2vwHzEIXhc2xu0S12GijVk5U6Gm93uBftrtulhfCb-8"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serial\": \"AD12345\",\r\n    \"jshshr\": 12345,\r\n    \"fullName\": \"Toshboyev Shohjahon\",\r\n    \"customerID\": \"685af76400784118305c5b96\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/passportInfo"
 					},
 					"response": []
 				}

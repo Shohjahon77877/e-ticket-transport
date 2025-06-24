@@ -7,5 +7,5 @@ const CustomerSchema = new Schema({
     timestamps: true
 })
 
-const Customer = model('customer', CustomerSchema);
+const Customer = model('Customer', CustomerSchema);
 export default Customer;

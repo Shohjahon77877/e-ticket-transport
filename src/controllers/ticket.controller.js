@@ -1,5 +1,6 @@
 import Ticket from '../models/ticket.model.js';
 import Transport from '../models/transport.model.js';
+import Customer from '../models/customer.model.js';
 import { successHandle } from '../helpers/success-handle.js';
 import { errorHandle } from '../helpers/error-handle.js';
 import { createTicketValidator, updateTicketValidator } from '../validation/ticket.validation.js';
@@ -14,6 +15,11 @@ export class TicketController {
             const transport = await Transport.findById(value.transportID);
             if (!transport) return errorHandle(res, 'Transport not found', 404);
 
+            const customer = await Customer.findById(value.customerID);
+            if (!customer) {
+                return errorHandle(res, 'Customer not found', 404);
+            }
+
             const ticket = await Ticket.create(value);
             return successHandle(res, ticket, 201);
         } catch (error) {
@@ -23,7 +29,7 @@ export class TicketController {
 
     async getAllTickets(_, res) {
         try {
-            const tickets = await Ticket.find().populate('transportID');
+            const tickets = await Ticket.find().populate('transportID').populate('customerID');
             return successHandle(res, tickets);
         } catch (error) {
             return errorHandle(res, error);
@@ -34,7 +40,9 @@ export class TicketController {
         try {
             const id = req.params.id;
             const ticket = await TicketController.findTicketById(res, id);
-            if (!ticket) return;
+            if (!ticket) {
+                return errorHandle(res, 'Error on finding ticket');
+            }
 
             return successHandle(res, ticket);
         } catch (error) {
@@ -51,9 +59,18 @@ export class TicketController {
             const { value, error } = updateTicketValidator(req.body);
             if (error) return errorHandle(res, error, 422);
 
-            if (value.transportID) {
+            if (value.transportID && value.customerID) {
                 const transport = await Transport.findById(value.transportID);
-                if (!transport) return errorHandle(res, 'Transport not found', 404);
+                if (!transport) {
+                    return errorHandle(res, 'Transport not found', 404);
+                }
+
+                const customer = await Customer.findById(value.customerID);
+                if (!customer) {
+                    return errorHandle(res, 'Customer not found', 404);
+                }
+            } else {
+                return errorHandle(res, 'TransportID or CustomerId not entered', 400);
             }
 
             const updatedTicket = await Ticket.findByIdAndUpdate(id, value, { new: true }).populate('transportID');
@@ -85,7 +102,7 @@ export class TicketController {
                 return errorHandle(res, 'Invalid ticket ID', 400);
             }
 
-            const ticket = await Ticket.findById(id).populate('transportID');
+            const ticket = await Ticket.findById(id).populate('transportID').populate('customerID');
             if (!ticket) {
                 return errorHandle(res, 'Ticket not found', 404);
             }

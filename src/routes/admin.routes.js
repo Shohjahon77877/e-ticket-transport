@@ -12,7 +12,7 @@ router
     .post('/', AuthGuard, RolesGuard(['superadmin']), controller.createAdmin)
     .post('/signin', controller.signInAdmin)
     .post('/token', controller.newAccessToken)
-    .post('/logout', controller.logOut)
+    .post('/logout', AuthGuard,controller.logOut)
     .get('/', AuthGuard, RolesGuard(['superadmin']), controller.getAllAdmins)
     .get('/:id', AuthGuard, SelfGuard, controller.getAdminByID)
     .patch('/:id', AuthGuard, SelfGuard, controller.updateAdminByID)
